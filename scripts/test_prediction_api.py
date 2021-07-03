@@ -1,7 +1,14 @@
 import requests
+import sys
+
+server_type = sys.argv[1]
 
 PORT = 9696
-URL = f'http://localhost:{PORT}/predict'
+
+if server_type == 'local':
+    URL = f'http://localhost:{PORT}/predict'
+elif server_type == 'heroku':
+    URL = f'https://mpg-pred-ml.herokuapp.com/predict'
 
 vehicle_config = {
     'acceleration': [17.0],
